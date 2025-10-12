@@ -163,29 +163,31 @@ def book_table() -> rx.Component:
     """The main table component for displaying books."""
     return rx.el.div(
         rx.el.div(
-            rx.el.h2("My Library", class_name="text-3xl font-bold text-gray-800"),
+            rx.el.h2(
+                "My Library", class_name="text-2xl md:text-3xl font-bold text-gray-800"
+            ),
             rx.el.div(
-                rx.el.button(
-                    rx.icon("book-plus", size=16, class_name="mr-2"),
-                    "Add Book",
-                    on_click=ReadingState.toggle_add_book_dialog,
-                    class_name="flex items-center bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 font-semibold transition-all shadow-md hover:shadow-lg",
-                ),
                 rx.el.div(
                     rx.icon(
                         "search",
                         class_name="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400",
                     ),
                     rx.el.input(
-                        placeholder="Search by title or author...",
+                        placeholder="Search...",
                         on_change=ReadingState.set_search_query.debounce(300),
-                        class_name="w-full max-w-sm pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500",
+                        class_name="w-full max-w-xs pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500 text-sm",
                     ),
-                    class_name="relative",
+                    class_name="relative flex-1",
                 ),
-                class_name="flex justify-between items-center mb-6",
+                rx.el.button(
+                    rx.icon("book-plus", size=16, class_name="mr-2"),
+                    "Add Book",
+                    on_click=ReadingState.toggle_add_book_dialog,
+                    class_name="flex items-center bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 font-semibold transition-all shadow-md hover:shadow-lg",
+                ),
+                class_name="flex items-center gap-2 md:gap-4",
             ),
-            class_name="flex justify-between items-center gap-4"
+            class_name="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6",
         ),
         rx.el.div(
             rx.el.div(

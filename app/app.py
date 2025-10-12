@@ -39,29 +39,34 @@ def index() -> rx.Component:
             ReadingState.show_log_session_dialog,
             ReadingState.toggle_log_session_dialog,
         ),
-        class_name="flex bg-gray-50 font-['Raleway'] min-h-screen",
+        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 
 def library() -> rx.Component:
     return rx.el.div(
         sidebar(),
-        rx.el.main(book_table(), class_name="flex-1 p-8 overflow-y-auto"),
+        rx.el.main(
+            book_table(), class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto"
+        ),
         dialog_base(
             "Add a New Book",
             add_book_form(),
             ReadingState.show_add_book_dialog,
             ReadingState.toggle_add_book_dialog,
         ),
-        class_name="flex bg-gray-50 font-['Raleway'] min-h-screen",
+        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 
 def log() -> rx.Component:
     return rx.el.div(
         sidebar(),
-        rx.el.main(reading_log_table(), class_name="flex-1 p-8 overflow-y-auto"),
-        class_name="flex bg-gray-50 font-['Raleway'] min-h-screen",
+        rx.el.main(
+            reading_log_table(),
+            class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto",
+        ),
+        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 

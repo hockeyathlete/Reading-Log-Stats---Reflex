@@ -42,5 +42,5 @@ def sidebar() -> rx.Component:
             sidebar_link("Help", "life-buoy", "/help"),
             class_name="flex flex-col gap-2 px-2 pb-4",
         ),
-        class_name="w-64 bg-white h-screen flex flex-col justify-between border-r border-gray-200 shadow-[1px_0_3px_rgba(0,0,0,0.02)]",
+        class_name="w-64 bg-white h-full hidden lg:flex flex-col justify-between border-r border-gray-200 shadow-[1px_0_3px_rgba(0,0,0,0.02)]",
     )

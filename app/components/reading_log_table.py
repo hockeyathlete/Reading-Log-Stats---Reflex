@@ -39,7 +39,8 @@ def reading_log_table() -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.el.h2(
-                "Daily Reading Log", class_name="text-3xl font-bold text-gray-800"
+                "Daily Reading Log",
+                class_name="text-2xl md:text-3xl font-bold text-gray-800",
             ),
             rx.el.div(
                 rx.icon(
@@ -49,11 +50,11 @@ def reading_log_table() -> rx.Component:
                 rx.el.input(
                     placeholder="Search by book title...",
                     on_change=ReadingState.set_log_search_query.debounce(300),
-                    class_name="w-full max-w-sm pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500",
+                    class_name="w-full max-w-xs pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500 text-sm",
                 ),
                 class_name="relative",
             ),
-            class_name="flex justify-between items-center mb-6",
+            class_name="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6",
         ),
         rx.el.div(
             rx.el.div(
