@@ -19,13 +19,20 @@ def dashboard() -> rx.Component:
             books_per_month_chart(),
             class_name="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6",
         ),
-        class_name="flex-1 p-8 overflow-y-auto",
+        class_name="flex-1 p-4 md:p-8 overflow-y-auto",
     )
 
 
 def index() -> rx.Component:
     return rx.el.div(
         sidebar(),
+        rx.cond(
+            ReadingState.show_mobile_sidebar,
+            rx.el.div(
+                on_click=ReadingState.toggle_mobile_sidebar,
+                class_name="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
+            ),
+        ),
         dashboard(),
         dialog_base(
             "Add a New Book",
@@ -46,6 +53,13 @@ def index() -> rx.Component:
 def library() -> rx.Component:
     return rx.el.div(
         sidebar(),
+        rx.cond(
+            ReadingState.show_mobile_sidebar,
+            rx.el.div(
+                on_click=ReadingState.toggle_mobile_sidebar,
+                class_name="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
+            ),
+        ),
         rx.el.main(
             book_table(), class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto"
         ),
@@ -62,6 +76,13 @@ def library() -> rx.Component:
 def log() -> rx.Component:
     return rx.el.div(
         sidebar(),
+        rx.cond(
+            ReadingState.show_mobile_sidebar,
+            rx.el.div(
+                on_click=ReadingState.toggle_mobile_sidebar,
+                class_name="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
+            ),
+        ),
         rx.el.main(
             reading_log_table(),
             class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto",

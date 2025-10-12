@@ -14,6 +14,7 @@ class ReadingState(rx.State):
     selected_book_id: int | None = None
     search_query: str = ""
     log_search_query: str = ""
+    show_mobile_sidebar: bool = False
 
     @rx.event
     def on_load(self):
@@ -142,6 +143,10 @@ class ReadingState(rx.State):
     @rx.event
     def toggle_log_session_dialog(self):
         self.show_log_session_dialog = not self.show_log_session_dialog
+
+    @rx.event
+    def toggle_mobile_sidebar(self):
+        self.show_mobile_sidebar = not self.show_mobile_sidebar
 
     @rx.event
     def add_book(self, form_data: dict):

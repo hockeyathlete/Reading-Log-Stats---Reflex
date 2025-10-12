@@ -1,4 +1,5 @@
 import reflex as rx
+from app.state import ReadingState
 
 
 def sidebar_link(text: str, icon: str, url: str) -> rx.Component:
@@ -16,11 +17,20 @@ def sidebar_link(text: str, icon: str, url: str) -> rx.Component:
             class_name="flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-teal-50 transition-colors group",
         ),
         href=url,
+        on_click=ReadingState.toggle_mobile_sidebar,
     )
 
 
 def sidebar() -> rx.Component:
     return rx.el.aside(
+        rx.cond(
+            ReadingState.show_mobile_sidebar,
+            rx.el.button(
+                rx.icon("x", size=24),
+                on_click=ReadingState.toggle_mobile_sidebar,
+                class_name="absolute top-4 right-4 p-2 text-gray-700 hover:bg-gray-100 rounded-lg lg:hidden z-50",
+            ),
+        ),
         rx.el.div(
             rx.el.div(
                 rx.icon("book-open", size=32, class_name="text-teal-600"),
@@ -42,5 +52,9 @@ def sidebar() -> rx.Component:
             sidebar_link("Help", "life-buoy", "/help"),
             class_name="flex flex-col gap-2 px-2 pb-4",
         ),
-        class_name="w-64 bg-white h-full hidden lg:flex flex-col justify-between border-r border-gray-200 shadow-[1px_0_3px_rgba(0,0,0,0.02)]",
+        class_name=rx.cond(
+            ReadingState.show_mobile_sidebar,
+            "fixed top-0 left-0 h-full w-64 bg-white z-50 transform translate-x-0 transition-transform duration-300 ease-out flex flex-col justify-between border-r border-gray-200 shadow-[1px_0_3px_rgba(0,0,0,0.02)]",
+            "fixed top-0 left-0 h-full w-64 bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-out lg:relative lg:translate-x-0 lg:flex flex-col justify-between border-r border-gray-200 shadow-[1px_0_3px_rgba(0,0,0,0.02)]",
+        ),
     )
