@@ -47,6 +47,12 @@ def library() -> rx.Component:
     return rx.el.div(
         sidebar(),
         rx.el.main(book_table(), class_name="flex-1 p-8 overflow-y-auto"),
+        dialog_base(
+            "Add a New Book",
+            add_book_form(),
+            ReadingState.show_add_book_dialog,
+            ReadingState.toggle_add_book_dialog,
+        ),
         class_name="flex bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
