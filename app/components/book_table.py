@@ -163,8 +163,17 @@ def book_table() -> rx.Component:
     """The main table component for displaying books."""
     return rx.el.div(
         rx.el.div(
-            rx.el.h2(
-                "My Library", class_name="text-2xl md:text-3xl font-bold text-gray-800"
+            rx.el.div(
+                rx.el.button(
+                    rx.icon("menu", size=24),
+                    on_click=ReadingState.toggle_mobile_sidebar,
+                    class_name="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors",
+                ),
+                rx.el.h2(
+                    "My Library",
+                    class_name="text-2xl md:text-3xl font-bold text-gray-800",
+                ),
+                class_name="flex items-center gap-4",
             ),
             rx.el.div(
                 rx.el.div(
