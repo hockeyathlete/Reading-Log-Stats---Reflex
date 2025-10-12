@@ -9,6 +9,9 @@ from app.components.book_table import book_table
 from app.components.reading_log_table import reading_log_table
 from app.db import create_db_and_tables
 
+# Call create_db_and_tables() here to ensure the database is initialized
+# before the application attempts to load data.
+create_db_and_tables()
 
 def dashboard() -> rx.Component:
     return rx.el.main(
@@ -105,4 +108,3 @@ app = rx.App(
 app.add_page(index, route="/", on_load=ReadingState.on_load)
 app.add_page(library, route="/library", on_load=ReadingState.on_load)
 app.add_page(log, route="/log", on_load=ReadingState.on_load)
-create_db_and_tables()
