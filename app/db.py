@@ -8,7 +8,7 @@ from sqlmodel import create_engine
 # load_dotenv()
 # DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine("postgresql+psycopg2://postgres:postgres123@localhost:5432/reading_tracker_reflex")
+engine = create_engine("psql 'postgresql://neondb_owner:npg_wTSH6B2oaKGF@ep-blue-silence-ae8a2zpy-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'")
 
 def create_db_and_tables():
     from app.models import SQLModel
