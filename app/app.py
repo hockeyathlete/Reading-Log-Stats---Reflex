@@ -9,9 +9,8 @@ from app.components.book_table import book_table
 from app.components.reading_log_table import reading_log_table
 from app.db import create_db_and_tables
 
-# Call create_db_and_tables() here to ensure the database is initialized
-# before the application attempts to load data.
 create_db_and_tables()
+
 
 def dashboard() -> rx.Component:
     return rx.el.main(
@@ -64,7 +63,7 @@ def library() -> rx.Component:
             ),
         ),
         rx.el.main(
-            book_table(), class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto"
+            book_table(), class_name="w-full p-4 md:p-8 overflow-y-auto lg:pl-64"
         ),
         dialog_base(
             "Add a New Book",
@@ -72,7 +71,7 @@ def library() -> rx.Component:
             ReadingState.show_add_book_dialog,
             ReadingState.toggle_add_book_dialog,
         ),
-        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
+        class_name="flex flex-col bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 
@@ -87,10 +86,9 @@ def log() -> rx.Component:
             ),
         ),
         rx.el.main(
-            reading_log_table(),
-            class_name="w-full lg:flex-1 p-4 md:p-8 overflow-y-auto",
+            reading_log_table(), class_name="w-full p-4 md:p-8 overflow-y-auto lg:pl-64"
         ),
-        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
+        class_name="flex flex-col bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 
