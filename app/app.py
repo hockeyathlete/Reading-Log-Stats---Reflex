@@ -85,10 +85,8 @@ def log() -> rx.Component:
                 class_name="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
             ),
         ),
-        rx.el.main(
-            reading_log_table(), class_name="w-full p-4 md:p-8 overflow-y-auto lg:pl-64"
-        ),
-        class_name="flex flex-col bg-gray-50 font-['Raleway'] min-h-screen",
+        rx.el.main(reading_log_table(), class_name="flex-1 p-4 md:p-8 overflow-y-auto"),
+        class_name="flex flex-col lg:flex-row bg-gray-50 font-['Raleway'] min-h-screen",
     )
 
 
