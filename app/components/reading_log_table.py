@@ -51,16 +51,25 @@ def reading_log_table() -> rx.Component:
                 class_name="flex items-center gap-4",
             ),
             rx.el.div(
-                rx.icon(
-                    "search",
-                    class_name="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400",
+                rx.el.div(
+                    rx.icon(
+                        "search",
+                        class_name="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400",
+                    ),
+                    rx.el.input(
+                        placeholder="Search by book title...",
+                        on_change=ReadingState.set_log_search_query.debounce(300),
+                        class_name="w-full max-w-xs pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500 text-sm",
+                    ),
+                    class_name="relative",
                 ),
-                rx.el.input(
-                    placeholder="Search by book title...",
-                    on_change=ReadingState.set_log_search_query.debounce(300),
-                    class_name="w-full max-w-xs pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-teal-500 focus:border-teal-500 text-sm",
+                rx.el.button(
+                    rx.icon("plus", size=16, class_name="md:mr-2"),
+                    rx.el.span("Log", class_name="hidden md:inline"),
+                    on_click=ReadingState.toggle_log_session_dialog,
+                    class_name="flex items-center bg-white text-gray-700 px-3 md:px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 font-semibold transition-all shadow-sm",
                 ),
-                class_name="relative",
+                class_name="flex items-center gap-2 md:gap-4",
             ),
             class_name="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6",
         ),
